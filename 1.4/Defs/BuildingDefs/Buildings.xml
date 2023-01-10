@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <ThingDef ParentName="BuildingBase">
+        <thingClass>Building_Bed</thingClass>
+        <defName>ATE_chargingpad</defName>
+        <label>humanoid charging pad</label>
+        <description>Designate a spot to charge a humanoid.</description>
+        <size>(1,1)</size>
+        <passability>Standable</passability>
+        <altitudeLayer>FloorEmplacement</altitudeLayer>
+        <designationCategory>Misc</designationCategory>
+        <graphicData>
+            <texPath>Things/Building/Misc/AnimalBed/AnimalSleepSpot</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <uiIconScale>0.80</uiIconScale>
+        <useHitPoints>True</useHitPoints>
+        <statBases>
+            <Comfort>0.4</Comfort>
+            <SurgerySuccessChanceFactor>0.7</SurgerySuccessChanceFactor>
+            <WorkToBuild>1000</WorkToBuild>
+            <MaxHitPoints>180</MaxHitPoints>
+            <Flammability>1.0</Flammability>
+        </statBases>
+        <building>
+            <bed_showSleeperBody>True</bed_showSleeperBody>
+            <sowTag>SupportPlantsOnly</sowTag>
+            <canPlaceOverImpassablePlant>false</canPlaceOverImpassablePlant>
+            <ai_chillDestination>false</ai_chillDestination>
+            <wakeDormantPawnsOnConstruction>false</wakeDormantPawnsOnConstruction>
+            <artificialForMeditationPurposes>false</artificialForMeditationPurposes>
+            <buildingTags>
+                <li>Bed</li>
+            </buildingTags>
+        </building>
+        <comps>
+            <li Class="CompProperties_AssignableToPawn">
+                <drawAssignmentOverlay>false</drawAssignmentOverlay>
+                <compClass>CompAssignableToPawn_Bed</compClass>
+            </li>
+            <li Class="CompProperties_Power">
+                <compClass>CompPowerTrader</compClass>
+                <basePowerConsumption>300</basePowerConsumption>
+                <idlePowerDraw>15</idlePowerDraw>
+                <shortCircuitInRain>true</shortCircuitInRain>
+            </li>
+            <li Class="CompProperties_Flickable" />
+            <li Class="CompProperties_HeatPusher">
+                <compClass>CompHeatPusherPowered</compClass>
+                <heatPerSecond>5</heatPerSecond>
+            </li>
+            <li Class="CompProperties_Breakdownable" />
+        </comps>
+        <drawGUIOverlay>True</drawGUIOverlay>
+        <uiOrder>3000</uiOrder>
+        <pathCost>50</pathCost>
+        <researchPrerequisites>
+            <!-- <li>Androids+++</li> -->
+          </researchPrerequisites>
+
+
+    </ThingDef>
+
+
+</Defs>
+<!--=========================== Animal beds ===============================-->
+
+<!-- <ThingDef ParentName="BuildingBase">
+    <defName>AnimalSleepingSpot</defName>
+<thingClass>Building_Bed</thingClass>
+    <label>animal sleeping spot</label>
+<description>Designates a spot on the ground where animals should sleep.</description>
+<size>(1,1)</size>
+    <passability>Standable</passability>
+<designationCategory>Furniture</designationCategory>
+    <uiOrder>2035</uiOrder>
+<scatterableOnMapGen>false</scatterableOnMapGen>
+    <useHitPoints>False</useHitPoints>
+<altitudeLayer>FloorEmplacement</altitudeLayer>
+    <rotatable>false</rotatable>
+    <graphicData>
+<texPath>Things/Building/Misc/AnimalBed/AnimalSleepSpot</texPath>
+<graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <uiIconScale>0.80</uiIconScale>
+<statBases>
+      <WorkToBuild>0</WorkToBuild>
+<SurgerySuccessChanceFactor>0.7</SurgerySuccessChanceFactor>
+    </statBases>
+<drawGUIOverlay>true</drawGUIOverlay>
+    <building>
+      <bed_humanlike>false</bed_humanlike>
+<bed_showSleeperBody>True</bed_showSleeperBody>
+      <sowTag>SupportPlantsOnly</sowTag>
+<canPlaceOverImpassablePlant>false</canPlaceOverImpassablePlant>
+<ai_chillDestination>false</ai_chillDestination>
+<wakeDormantPawnsOnConstruction>false</wakeDormantPawnsOnConstruction>
+<artificialForMeditationPurposes>false</artificialForMeditationPurposes>
+    </building>
+    <comps>
+<li Class="CompProperties_AssignableToPawn">
+        <drawAssignmentOverlay>false</drawAssignmentOverlay>
+<compClass>CompAssignableToPawn_Bed</compClass>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <ThingDef
+Abstract="True" Name="AnimalBedFurnitureBase" ParentName="FurnitureWithQualityBase">
+<thingClass>Building_Bed</thingClass>
+    <rotatable>false</rotatable>
+<fillPercent>0.15</fillPercent>
+    <pathCost>14</pathCost>
+<passability>PassThroughOnly</passability>
+    <canOverlapZones>false</canOverlapZones>
+<castEdgeShadows>true</castEdgeShadows>
+    <drawGUIOverlay>true</drawGUIOverlay>
+    <building>
+<bed_humanlike>false</bed_humanlike>
+      <bed_showSleeperBody>true</bed_showSleeperBody>
+<bed_healPerDay>4</bed_healPerDay>
+      <destroySound>BuildingDestroyed_Soft_Small</destroySound>
+</building>
+    <altitudeLayer>Building</altitudeLayer>
+    <comps>
+      <li
+Class="CompProperties_AssignableToPawn">
+        <drawAssignmentOverlay>false</drawAssignmentOverlay>
+<compClass>CompAssignableToPawn_Bed</compClass>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <ThingDef
+ParentName="AnimalBedFurnitureBase">
+    <defName>AnimalSleepingBox</defName>
+    <label>animal
+sleeping box</label>
+    <description>A small box for animals to sleep in. Fits smaller animals
+like chickens, cats, or small dogs.</description>
+    <uiOrder>2040</uiOrder>
+    <graphicData>
+<texPath>Things/Building/Misc/AnimalBed/AnimalSleepBox</texPath>
+<graphicClass>Graphic_Single</graphicClass>
+      <damageData>
+        <rect>(0.05,0.05,0.9,0.9)</rect>
+<cornerTL>Damage/Corner</cornerTL>
+        <cornerTR>Damage/Corner</cornerTR>
+<cornerBL>Damage/Corner</cornerBL>
+        <cornerBR>Damage/Corner</cornerBR>
+      </damageData>
+</graphicData>
+    <stuffCategories>
+      <li>Metallic</li>
+      <li>Woody</li>
+      <li>Stony</li>
+</stuffCategories>
+    <costStuffCount>25</costStuffCount>
+    <building>
+<bed_maxBodySize>0.55</bed_maxBodySize>
+      <paintable>true</paintable>
+    </building>
+<statBases>
+      <MaxHitPoints>75</MaxHitPoints>
+      <Flammability>1.0</Flammability>
+<WorkToBuild>180</WorkToBuild>
+      <Mass>3</Mass>
+<BedRestEffectiveness>0.93</BedRestEffectiveness>
+      <Comfort>0.60</Comfort>
+<ImmunityGainSpeedFactor>1.05</ImmunityGainSpeedFactor>
+<SurgerySuccessChanceFactor>1</SurgerySuccessChanceFactor>
+    </statBases>
+<uiIconScale>0.75</uiIconScale>
+  </ThingDef>
+
+  <ThingDef ParentName="AnimalBedFurnitureBase">
+<defName>AnimalBed</defName>
+    <label>animal bed</label>
+    <description>A soft bed for animals
+to sleep on. Fits any animal.</description>
+    <uiOrder>2050</uiOrder>
+    <graphicData>
+<texPath>Things/Building/Misc/AnimalBed/AnimalBed</texPath>
+<graphicClass>Graphic_Single</graphicClass>
+      <drawSize>1.2</drawSize>
+    </graphicData>
+<uiIconScale>0.80</uiIconScale>
+    <stuffCategories>
+      <li>Fabric</li>
+      <li>Leathery</li>
+</stuffCategories>
+    <costStuffCount>40</costStuffCount>
+    <building>
+<destroySound>BuildingDestroyed_Soft_Small</destroySound>
+    </building>
+    <statBases>
+<MaxHitPoints>140</MaxHitPoints>
+      <Flammability>1.0</Flammability>
+<WorkToBuild>400</WorkToBuild>
+      <Mass>5</Mass>
+      <BedRestEffectiveness>1</BedRestEffectiveness>
+<Comfort>0.75</Comfort>
+      <ImmunityGainSpeedFactor>1.07</ImmunityGainSpeedFactor>
+<SurgerySuccessChanceFactor>1</SurgerySuccessChanceFactor>
+    </statBases>
+  </ThingDef> -->
